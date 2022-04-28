@@ -622,7 +622,7 @@ function normalizeTickInterval(interval, multiples, magnitude, options) {
  * Get a normalized tick interval for dates. Returns a configuration object with
  * unit range (interval), count and name. Used to prepare data for getTimeTicks. 
  * Previously this logic was part of getTimeTicks, but as getTimeTicks now runs
- * of segments in stock charts, the normalizing logic was extracted in order to 
+ * of segments in stock CurriculumStatisticsCharts, the normalizing logic was extracted in order to
  * prevent it for running over again for each segment having the same interval. 
  * #662, #697.
  */
@@ -3569,7 +3569,7 @@ SVGRenderer.prototype = {
 	 * @param {Number} x X position
 	 * @param {Number} y Y position
 	 * @param {Number} r Radius
-	 * @param {Number} innerR Inner radius like used in donut charts
+	 * @param {Number} innerR Inner radius like used in donut CurriculumStatisticsCharts
 	 * @param {Number} start Starting angle
 	 * @param {Number} end Ending angle
 	 */
@@ -3617,7 +3617,7 @@ SVGRenderer.prototype = {
 		return wrapper.attr(
 				isObject(x) ?
 					x :
-					// do not crispify when an object is passed in (as in column charts)
+					// do not crispify when an object is passed in (as in column CurriculumStatisticsCharts)
 					wrapper.crisp(strokeWidth, x, y, mathMax(width, 0), mathMax(height, 0))
 			);
 	},
@@ -5496,7 +5496,7 @@ var VMLRendererExtension = { // inherit SVGRenderer
 		return wrapper.attr(
 				isObject(x) ?
 					x :
-					// do not crispify when an object is passed in (as in column charts)
+					// do not crispify when an object is passed in (as in column CurriculumStatisticsCharts)
 					wrapper.crisp(strokeWidth, x, y, mathMax(width, 0), mathMax(height, 0))
 			);
 	},
@@ -5722,7 +5722,7 @@ if (useCanVG) {
 		var deferredRenderCalls = [];
 
 		/**
-		 * When downloaded, we are ready to draw deferred charts.
+		 * When downloaded, we are ready to draw deferred CurriculumStatisticsCharts.
 		 */
 		function drawDeferred() {
 			var callLength = deferredRenderCalls.length,
@@ -6768,7 +6768,7 @@ Axis.prototype = {
 
 		axis.series = axis.series || []; // populated by Series
 
-		// inverted charts have reversed xAxes as default
+		// inverted CurriculumStatisticsCharts have reversed xAxes as default
 		if (chart.inverted && isXAxis && axis.reversed === UNDEFINED) {
 			axis.reversed = true;
 		}
@@ -7566,7 +7566,7 @@ Axis.prototype = {
 			axis.tickInterval = axis.postProcessTickInterval(axis.tickInterval);
 		}
 
-		// In column-like charts, don't cramp in more ticks than there are points (#1943)
+		// In column-like CurriculumStatisticsCharts, don't cramp in more ticks than there are points (#1943)
 		if (axis.pointRange) {
 			axis.tickInterval = mathMax(axis.pointRange, axis.tickInterval);
 		}
@@ -7816,7 +7816,7 @@ Axis.prototype = {
 	
 	/**
 	 * Overridable method for zooming chart. Pulled out in a separate method to allow overriding
-	 * in stock charts.
+	 * in stock CurriculumStatisticsCharts.
 	 */
 	zoom: function (newMin, newMax) {
 
@@ -8858,7 +8858,7 @@ Tooltip.prototype = {
 			
 		clearTimeout(this.hideTimer);
 		
-		// get the reference point coordinates (pie charts use tooltipPos)
+		// get the reference point coordinates (pie CurriculumStatisticsCharts use tooltipPos)
 		tooltip.followPointer = splat(point)[0].series.tooltipOptions.followPointer;
 		anchor = tooltip.getAnchor(point, mouseEvent);
 		x = anchor[0];
@@ -9121,7 +9121,7 @@ Pointer.prototype = {
 	},
 
 	/**
-	 * With line type charts with a single tracker, get the point closest to the mouse.
+	 * With line type CurriculumStatisticsCharts with a single tracker, get the point closest to the mouse.
 	 * Run Point.onMouseOver and display tooltip for the point or points.
 	 */
 	runPointActions: function (e) {
@@ -9332,7 +9332,7 @@ Pointer.prototype = {
 
 		
 		// Set geometry for clipping, selection and transformation
-		if (!inverted) { // TODO: implement clipping for inverted charts
+		if (!inverted) { // TODO: implement clipping for inverted CurriculumStatisticsCharts
 			clip[xy] = clipXY - plotLeftTop;
 			clip[wh] = selectionWH;
 		}
@@ -11998,7 +11998,7 @@ Chart.prototype = {
 		// fire the chart.destoy event
 		fireEvent(chart, 'destroy');
 		
-		// Delete the chart from charts lookup array
+		// Delete the chart from CurriculumStatisticsCharts lookup array
 		charts[chart.index] = UNDEFINED;
 		chart.renderTo.removeAttribute('data-highcharts-chart');
 
@@ -13347,7 +13347,7 @@ Series.prototype = {
 				closestPointRange = distance;
 
 			// Unsorted data is not supported by the line tooltip, as well as data grouping and 
-			// navigation in Stock charts (#725) and width calculation of columns (#1900)
+			// navigation in Stock CurriculumStatisticsCharts (#725) and width calculation of columns (#1900)
 			} else if (distance < 0 && series.requireSorting) {
 				error(15);
 			}
@@ -15130,7 +15130,7 @@ Series.prototype = {
 
 	/**
 	 * Draw the tracker object that sits above all data labels and markers to
-	 * track mouse events on the graph or points. For the line type charts
+	 * track mouse events on the graph or points. For the line type CurriculumStatisticsCharts
 	 * the tracker uses the same graphPath, but with a greater stroke width
 	 * for better control.
 	 */
@@ -15354,7 +15354,7 @@ var AreaSeries = extendClass(Series, {
 	
 	/**
 	 * Extendable method to close the segment path of an area. This is overridden in polar 
-	 * charts.
+	 * CurriculumStatisticsCharts.
 	 */
 	closeSegment: function (path, segment, translatedThreshold) {
 		path.push(
@@ -15703,7 +15703,7 @@ var ColumnSeries = extendClass(Series, {
 			optionPointWidth = options.pointWidth,
 			pointPadding = defined(optionPointWidth) ? (pointOffsetWidth - optionPointWidth) / 2 :
 				pointOffsetWidth * options.pointPadding,
-			pointWidth = pick(optionPointWidth, pointOffsetWidth - 2 * pointPadding), // exact point width, used in polar charts
+			pointWidth = pick(optionPointWidth, pointOffsetWidth - 2 * pointPadding), // exact point width, used in polar CurriculumStatisticsCharts
 			colIndex = (reversedXAxis ? 
 				columnCount - (series.columnIndex || 0) : // #1251
 				series.columnIndex) || 0,

@@ -4,12 +4,13 @@
 
 }
 .header{
-    position: fixed;
+    position: absolute;
     z-index: 1;
-    top:0px;
+    top:0;
     height: 110px;
     width: 100%;
     background-color: white;
+    box-shadow:  0 5px 1px white ;
 
 }
 .nav_log{
@@ -34,9 +35,8 @@
 
 }
 .container ul li a:hover{
-    color:#86ff73;
-    border-bottom: 1px solid #86ff73;
-
+    color:#409EFF;
+    border-bottom: 1px solid #409EFF;
 }
 .header_search{
     position: relative;

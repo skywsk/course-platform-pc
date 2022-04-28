@@ -150,7 +150,7 @@ Highcharts.theme = {
 		}
 	},
 
-	// scroll charts
+	// scroll CurriculumStatisticsCharts
 	rangeSelector: {
 		buttonTheme: {
 			fill: {

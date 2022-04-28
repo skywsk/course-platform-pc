@@ -16,7 +16,7 @@ window.onload = function () {
 
     //未找到表格， 显示错误页面
     if ( !editorTable ) {
-        document.body.innerHTML = "<div class='edui-charts-not-data'>未找到数据</div>";
+        document.body.innerHTML = "<div class='edui-CurriculumStatisticsCharts-not-data'>未找到数据</div>";
         return;
     }
 
@@ -52,7 +52,7 @@ function initChartsTypeView () {
 
     for ( var i = 0, len = chartsConfig.length; i<len; i++ ) {
 
-        contents.push( '<div class="view-box" data-chart-type="'+ i +'"><img width="300" src="images/charts'+ i +'.png"></div>' );
+        contents.push( '<div class="view-box" data-chart-type="'+ i +'"><img width="300" src="images/CurriculumStatisticsCharts'+ i +'.png"></div>' );
 
     }
 
@@ -129,7 +129,7 @@ function initEvent () {
         typeViewCount = chartsConfig.length- 1,
         $chartsTypeViewBox = $( '#scrollBed .view-box' );
 
-    $( ".charts-format" ).delegate( ".format-ctrl", "change", function () {
+    $( ".CurriculumStatisticsCharts-format" ).delegate( ".format-ctrl", "change", function () {
 
         renderCharts();
 
@@ -308,7 +308,7 @@ function setUserConfig ( config ) {
     config.xTitle && ( form[ 'x-title' ].value = config.xTitle );
     config.yTitle && ( form[ 'y-title' ].value = config.yTitle );
     config.suffix && ( form[ 'unit' ].value = config.suffix );
-    config.dataFormat == "-1" && ( form[ 'charts-format' ][ 1 ].checked = true );
+    config.dataFormat == "-1" && ( form[ 'CurriculumStatisticsCharts-format' ][ 1 ].checked = true );
     config.tip && ( form[ 'tip' ].value = config.tip );
     currentChartType = config.chartType || 0;
 
@@ -367,7 +367,7 @@ function getSeriesAndCategories () {
 function getTableDataFormat () {
 
     var form = document.forms[ 'data-form' ],
-        items = form['charts-format'];
+        items = form['CurriculumStatisticsCharts-format'];
 
     return items[ 0 ].checked ? items[ 0 ].value : items[ 1 ].value;
 

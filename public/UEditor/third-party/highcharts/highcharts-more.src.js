@@ -1970,7 +1970,7 @@ Axis.prototype.beforePadding = function () {
  * End Bubble series code                                                     *
  *****************************************************************************/
 /**
- * Extensions for polar charts. Additionally, much of the geometry required for polar charts is
+ * Extensions for polar CurriculumStatisticsCharts. Additionally, much of the geometry required for polar CurriculumStatisticsCharts is
  * gathered in RadialAxes.js.
  * 
  */
@@ -2206,10 +2206,10 @@ function polarAnimate(proceed, init) {
 		plotTop = chart.plotTop,
 		attribs;
 
-	// Specific animation for polar charts
+	// Specific animation for polar CurriculumStatisticsCharts
 	if (chart.polar) {
 		
-		// Enable animation on polar charts only in SVG. In VML, the scaling is different, plus animation
+		// Enable animation on polar CurriculumStatisticsCharts only in SVG. In VML, the scaling is different, plus animation
 		// would be so slow it would't matter.
 		if (chart.renderer.isSVG) {
 
@@ -2252,7 +2252,7 @@ function polarAnimate(proceed, init) {
 			}
 		}
 	
-	// For non-polar charts, revert to the basic animation
+	// For non-polar CurriculumStatisticsCharts, revert to the basic animation
 	} else {
 		proceed.call(this, init);
 	} 

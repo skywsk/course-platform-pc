@@ -24050,7 +24050,7 @@ UE.plugin.register('autosave', function (){
 
 });
 
-// plugins/charts.js
+// plugins/CurriculumStatisticsCharts.js
 UE.plugin.register('charts', function (){
 
     var me = this;
@@ -24099,7 +24099,7 @@ UE.plugin.register('charts', function (){
                     }
 
                     tableNode.setAttribute( "data-chart", flagText.join( ";" ) );
-                    domUtils.addClass( tableNode, "edui-charts-table" );
+                    domUtils.addClass( tableNode, "edui-CurriculumStatisticsCharts-table" );
 
 
 
@@ -27837,7 +27837,7 @@ UE.ui = baidu.editor.ui = {};
         'music':'~/dialogs/music/music.html',
         'template':'~/dialogs/template/template.html',
         'background':'~/dialogs/background/background.html',
-        'charts': '~/dialogs/charts/charts.html'
+        'charts': '~/dialogs/CurriculumStatisticsCharts/CurriculumStatisticsCharts.html'
     };
     //为工具栏添加按钮，以下都是统一的按钮触发命令，所以写在一起
     var btnCmds = ['undo', 'redo', 'formatmatch',
