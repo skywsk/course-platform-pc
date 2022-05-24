@@ -9,7 +9,6 @@
         style="float: right;margin-right: 30px"
       >
         进入编辑
-
       </el-button>
     </router-link>
     <br><br>
@@ -18,9 +17,6 @@
                :props="defaultProps"
                @node-click="handleNodeClick"></el-tree>
     </div>
-  <p>{{chapter}}</p>
-
-
   </div>
 
 </template>
@@ -43,7 +39,6 @@
             handleNodeClick(data) {
                 this.node = data
                 console.log(data);
-                // this.$router.push({name:'search',params:{keyword:this.keyword},query:{k:this.keyword.toUpperCase()}})
                 this.$router.push({name: 'courseShow', params: {node: this.node}, query: {k: this.node}})
             }
         },

@@ -6,7 +6,12 @@
       :visible.sync="drawer"
       direction="rtl">
 
-      <el-tree :data="chapter" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+      <el-tree :data="chapter"
+               node-key="id"
+               :props="defaultProps"
+               :default-expanded-keys="[$route.params.node.id]"
+               @node-click="handleNodeClick"
+               highlight-current="true"></el-tree>
 
     </el-drawer>
 
@@ -43,8 +48,6 @@
         </el-tab-pane>
       </el-tabs>
     </div>
-
-
 
   </div>
 </template>
@@ -148,7 +151,11 @@
             },
             handleClick(tab, event) {
                 console.log(tab, event);
+            },
+            setCurrentNode(node){
+                console.log(node)
             }
+
         },
         created() {
             this.$api.getCourseShow(1).then(
@@ -157,6 +164,8 @@
                     this.test=this.dataUrl[0].dataUrl
                 }
             )
+            this.setActived(this.$route.params.node.id+'222')
+
         },
         computed:{
             ...mapState('CourseIndex',['chapter'])
@@ -170,4 +179,6 @@
     margin: 0 auto;
     text-align: center;
   }
+  .el-tree-node:focus > .el-tree-node__content {
+    background-color: #000}
 </style>

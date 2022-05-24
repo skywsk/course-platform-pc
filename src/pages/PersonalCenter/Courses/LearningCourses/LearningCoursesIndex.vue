@@ -24,6 +24,7 @@
         components:{LearnCourses},
         data() {
             return {
+                node: [],
                 defaultProps: {
                     children: 'children',
                     label: 'label'
@@ -32,7 +33,9 @@
         },
         methods: {
             handleNodeClick(data) {
+                this.node = data
                 console.log(data);
+                this.$router.push({name: 'courseShow', params: {node: this.node}, query: {k: this.node}})
             }
         },
         computed:{

@@ -18,7 +18,7 @@
         </span>
       </template>
       <span class="icon" slot="addTreeNodeIcon" ><i class="el-icon-plus"></i></span>
-      <span class="icon" slot="addLeafNodeIcon" ><i class="el-icon-plus"></i></span>
+      <span class="icon" slot="addLeafNodeIcon" ></span>
       <span class="icon" slot="editNodeIcon" ><i class="el-icon-edit"></i></span>
       <span class="icon" slot="delNodeIcon" ><i class="el-icon-delete"></i></span>
       <span class="icon" slot="leafNodeIcon" >🍃</span>
@@ -42,8 +42,9 @@
             return {
                 newTree: {},
                 data: new Tree([
+
                     {
-                        name: '命题',
+                        name: '第一章 数理逻辑',
                         id: 1,
                         pid: 0,
                         // dragDisabled: true,
@@ -53,33 +54,79 @@
                         // delNodeDisabled: true,
                         children: [
                             {
-                                name: '命题真值',
-                                id: 2,
+                                name: '命题',
+                                id: 8,
                                 isLeaf: true,
-                                pid: 1
+                                children: [
+                                    {
+                                        name: '命题真值',
+                                        id: 9,
+                                        isLeaf: true,
+                                        pid: 1
+                                    },
+                                    {
+                                        name: '假命题',
+                                        id: 10,
+                                        isLeaf: true,
+                                        pid: 1
+                                    },
+                                    {
+                                        name: '简单命题',
+                                        id: 11,
+                                        isLeaf: true,
+                                        pid: 1
+                                    },
+                                    {
+                                        name: '复合命题',
+                                        id: 12,
+                                        isLeaf: true,
+                                        pid: 1,
+                                        children:[
+                                            {
+                                                name: '否定命题',
+                                                id: 13,
+                                                isLeaf: true,
+                                                pid: 1
+                                            },
+                                        ]
+                                    },
+
+                                ]
                             }
                         ]
                     },
                     {
-                        name: '复合命题',
-                        id: 3,
+                        name: '第二章 命题逻辑等值演算',
+                        id: 2,
                         pid: 0,
-                        children: {
-                            name: '命题等价式',
-                            id: 5,
-                            isLeaf: true,
-                            pid: 1}
                     },
                     {
-                        name: '公式',
+                        name: '第三章 命题逻辑推理理论',
+                        id: 3,
+                        pid: 0
+                    },
+                    {
+                        name: '第四章 一阶逻辑基本概念',
                         id: 4,
                         pid: 0,
-                        children: {
-                            name: '成真赋值',
-                            id: 5,
-                            isLeaf: true,
-                            pid: 1}
-                    }
+                    },
+                    {
+                        name: '第五章 一阶逻辑等值演算与推理',
+                        id: 5,
+                        pid: 0,
+                    },
+                    {
+                        name: '第六章 集合代数',
+                        id: 6,
+                        pid: 0,
+
+                    },
+                    {
+                        name: '第七章 二元关系',
+                        id: 7,
+                        pid: 0,
+
+                    },
                 ])
             }
         },

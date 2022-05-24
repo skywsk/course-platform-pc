@@ -3,7 +3,7 @@
     <div class="header" style="background-color: #3A4357">
       <el-row>
         <el-col :span="2" :offset="10"><span style="line-height: 40px;color: #eee">新建作业</span></el-col>
-        <el-button type="primary" style="float: right" >完成</el-button>
+        <el-button type="primary" style="float: right" @click="submit">完成</el-button>
       </el-row>
     </div>
 
@@ -20,15 +20,26 @@
         评分机制：
         <el-radio v-model="radio" label="1">百分制</el-radio>
         <el-radio v-model="radio" label="2">自定义</el-radio>
+        <br><br>
+        <div class="block">
+          <span class="demonstration">截止时间：</span>
+          <el-date-picker
+            v-model="value1"
+            type="date"
+            placeholder="选择日期"
+            format="yyyy 年 MM 月 dd 日"
+            value-format="yyyy-MM-dd">
+          </el-date-picker>
+        </div>
       </div>
     </div>
     <div class="body">
       <el-container>
         <el-aside class="aside">
           <div class="questionsNum">
-            <p>题数:，总分0分</p><br><br>
+            <p v-if="qNum>0">题数:{{qNum}}，总分:100分</p><br><br>
             <ul class="questionsNumUl">
-              <li v-for="(num,index) in questionNum" v-bind:key="index">  {{num.id}}
+              <li v-for="(num,index) in questionNum" v-bind:key="index" >  {{num.id}}
                 <el-button type="danger"
                            @click="removeOption"
                            icon="el-icon-delete" circle
@@ -102,8 +113,8 @@
               <el-row>
                 <el-col :span="24">
                   <el-col :span="3" :offset="1"><h4>知识点标签:</h4></el-col>
-                  <el-col :span="2" v-for="node in treeNodesData" :key="node">
-                                    {{node.name}}
+                  <el-col :span="4" v-for="node in treeNodesData" :key="node">
+                                    {{node.label}}
                   </el-col>
                 </el-col>
               </el-row>
@@ -120,6 +131,12 @@
                   </div>
                 </el-dialog>
               </div>
+              <el-col>
+                <el-col :span="2" offset="1">解析：</el-col>
+              <el-col :span="18">
+                <ueditor :FrameHeight="FrameHeight"></ueditor>
+              </el-col>
+              </el-col>
             </div>
           </div>
 
@@ -133,7 +150,7 @@
 </template>
 
 <script>
-    let ax=0,i=4
+    let i=4
     import ueditor from "@/components/ueditor";
     import TreeKnowledgePoints from "@/components/TreeKnowledgePoints";
     export default {
@@ -144,16 +161,14 @@
         },
         data() {
             return {
+                value1: '',
                 FrameHeight:200,
+                qNum:0,
                 input: '',
                 radio: '1',
                 treeNodesData:[],
                 dialogFormVisible:false,
                 questionNum:[
-                    {
-                        id:this.ax,
-                        // type:'singleChoice'
-                    }
                 ],
                 optionsData: [
                     {id: 'A', options: 'A'},
@@ -165,11 +180,10 @@
         },
         methods:{
             addSingleChoice(){
-                if(this.questionNum.length<1)ax=0
-                this.questionNum.push({
-                    id:++ax
+                ++this.qNum;
+                if (this.qNum>0) this.questionNum.push({
+                    id:this.qNum
                 })
-                console.log(ax)
             },
 
             addoption(){
@@ -187,13 +201,23 @@
 
             removeOption(){
                 this.questionNum.shift(
-                    {id:this.id
-                    }
-
+                    this.qNum--,
+                    {id:this.qNum}
                 )
             },
             sendTreeNodeData(value){
                 this.treeNodesData=value
+            },
+            submit(){
+                let problem={
+                    title:this.input,
+                    time:this.value1
+                }
+                console.log(problem)
+                this.$store.commit('HomeWork/setProblem',problem)
+
+                this.$router.push('managementCourse')
+
             }
         }
     }
@@ -209,7 +233,7 @@
     margin:0 auto;
     margin-top: 60px;
     width: 1200px;
-    height: 150px;
+    height: 200px;
     background-color: white;
     border-radius: 10px;
   }

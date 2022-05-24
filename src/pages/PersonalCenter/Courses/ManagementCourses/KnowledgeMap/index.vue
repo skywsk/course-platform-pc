@@ -1,6 +1,7 @@
 <template><div>
   <div class="KMheader">
     <el-row>
+
       <el-col :span="3">
         <el-button type="primary" plain @click="addNode">添加知识点</el-button>
       </el-col>
@@ -20,8 +21,9 @@
           </el-dropdown-menu>
         </el-dropdown>
       </el-col>
+
       <el-col :span="2">
-        <p><i class="el-icon-s-opportunity"></i>查看知识图谱</p>
+        <router-link to="/courseGraph"><p><i class="el-icon-s-opportunity" ></i>查看知识图谱</p></router-link>
       </el-col>
     </el-row>
     <div>

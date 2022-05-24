@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import LoginModule from "./modules/LoginModule";
 import CourseIndex from "@/store/modules/CourseIndex";
+import CoursesDiscuss from "@/store/modules/CoursesDiscuss";
+import HomeWork from "@/store/modules/HomeWork";
 Vue.use(Vuex)
 export default new Vuex.Store({
     state:{
@@ -15,6 +17,8 @@ export default new Vuex.Store({
     },
     modules:{
         LoginModule,
-        CourseIndex
+        CourseIndex,
+        CoursesDiscuss,
+        HomeWork
     }
 })

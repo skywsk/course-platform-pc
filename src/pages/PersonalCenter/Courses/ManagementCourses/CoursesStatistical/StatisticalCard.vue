@@ -39,6 +39,7 @@
     justify-content: space-between;
   }
   .cardContent{
+    color: #409EFF;
     font-size: 30px;
     padding: 10px 0px;
   }

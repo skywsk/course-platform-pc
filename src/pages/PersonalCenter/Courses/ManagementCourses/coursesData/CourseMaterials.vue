@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div class="dataHeader">
+  <div class="dataHeader" v-if="isShow">
     <el-button type="primary" plain style="float: right" @click='addMaterial'>新建文件夹</el-button>
     &nbsp;&nbsp;
     <el-button type="primary" plain
@@ -13,6 +13,7 @@
     <div class="dataList">
       <el-table
         :data="tableData.filter(data => !search || data.fileName.toLowerCase().includes(search.toLowerCase()))"
+        @row-click="upload"
         style="width: 100%">
         <el-table-column
           type="selection"
@@ -23,14 +24,17 @@
           prop="id">
         </el-table-column>
         <el-table-column
-          label="文件夹"
-          prop="fileName">
+          label="文件夹/文件名"
+          prop="fileName"
+          @click="upload"
+        >
         </el-table-column>
         <el-table-column
           label="大小"
           prop="fileSize">
         </el-table-column>
         <el-table-column
+          v-if="isShow"
           label="操作">
           <template slot-scope="scope">
             <el-button
@@ -42,6 +46,7 @@
               @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
           </template>
         </el-table-column>
+
         <el-table-column>
           <template slot="header" >
             <el-input
@@ -54,7 +59,7 @@
 
       </el-table>
     </div>
-    <add-material ref="dialog" ></add-material>
+    <add-material ref="dialog"  @test="test"></add-material>
     <pagination :total='total' :pageSize='pageSize'></pagination>
 <!--    <test :total="total" :page-size="pageSize"></test>-->
   </div>
@@ -74,10 +79,12 @@
         },
         data(){
             return{
-                tableData: [],
+                isShow:true,
+                tableData:[],
                 search: '',
                 total:'',
-                pageSize:''
+                pageSize:'',
+                fileUrl:''
             }
         },
         methods:{
@@ -92,6 +99,19 @@
             },
             handleDelete(index, row) {
                 console.log(index, row);
+            },
+            test(value){
+                this.fileUrl=value.response.url.slice(7)
+                let fileObj={
+                    id:3,
+                    fileName:value.name,
+                    fileSize:Math.floor(value.size/10000)+'M'
+                }
+                this.tableData.push(fileObj)
+            },
+            upload(row, column, event){
+                console.log(row, column, event)
+                location.replace('http://localhost:8888/'+this.fileUrl);
             }
         },
         created() {
@@ -115,7 +135,7 @@
 
 <style scoped>
 .dataList{
-  width: 1440px;
+  width: 1250px;
   height: 400px;
   background-color: white;
   margin:0 auto;

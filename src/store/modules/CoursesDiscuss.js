@@ -1,8 +1,13 @@
 export default{
-    state:{
-        DiscussInfo:[
+    namespaced:true,
 
-        ]
+    state:{
+        DiscussInfo:[]
+    },
+    mutations:{
+        addDiscussInfo(state,payload){
+            state.DiscussInfo.push(payload)
+        }
     }
 
 }

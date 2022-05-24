@@ -1,7 +1,11 @@
 <template>
   <LearnCourses>
-    <el-button type="primary" plain icon="el-icon-edit" style="float: right">添加话题</el-button>
-    <el-empty description="暂无话题，请添加"></el-empty>
+    <el-col>
+    <el-col :span="24" class="title"><h1>讨论</h1></el-col>
+    <el-col>
+      <el-col :span="4" offset="20"><el-button type="primary" plain icon="el-icon-edit">添加话题</el-button></el-col></el-col>
+    <el-col> <el-empty description="暂无话题，请添加"></el-empty></el-col>
+    </el-col>
   </LearnCourses>
 </template>
 
@@ -16,5 +20,11 @@
 </script>
 
 <style scoped>
-
+  .title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eeee;
+    height: 40px;
+  }
 </style>

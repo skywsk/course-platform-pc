@@ -22,16 +22,19 @@ import ManagementCourse from '../pages/PersonalCenter/Courses/ManagementCourses/
 import CourseShow from "@/pages/PersonalCenter/Courses/ManagementCourses/ManagementIndex/CourseShow";
 import WorkEditor from "@/pages/PersonalCenter/Courses/ManagementCourses/HomeWork/WorkEditor";
 import EditChapter from "@/pages/PersonalCenter/Courses/ManagementCourses/ManagementIndex/EditChapter";
-
+import CourseGraph from "@/pages/PersonalCenter/Courses/ManagementCourses/KnowledgeMap/CourseGraph";
 
 import LearningCoursesIndex from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCoursesIndex";
-import LearningCourseStatistics from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCourseStatistics";
+import LearningCourseStatistics from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCourseStatistics/index";
 import CoursesKnowledgeMap from "@/pages/PersonalCenter/Courses/LearningCourses/CoursesKnowledgeMap";
 import LearningCoursesData from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCoursesData";
 import LearningCoursesExamination from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCoursesExamination";
 import LearningCoursesHomeWork from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCoursesHomeWork/index";
 import LearningCoursesNotice from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCoursesNotice";
 import LearningCourseDiscuss from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCourseDiscuss";
+import CourseWork from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCoursesHomeWork/CourseWork";
+import PeerExercises from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCoursesHomeWork/PeerExercises";
+import PrefaceExercises from "@/pages/PersonalCenter/Courses/LearningCourses/LearningCoursesHomeWork/PrefaceExercises";
 const routes = [
     {
         path: '*',
@@ -129,6 +132,10 @@ const routes = [
         path: '/workEditor',
         component: WorkEditor
     },
+    {
+        path: '/courseGraph'  ,
+        component: CourseGraph
+    },
     // {
     //   path: '/managementIndex',
     //   component: ManagementIndex,
@@ -175,6 +182,18 @@ const routes = [
     {
         path:'/learningCourseDiscuss',
         component: LearningCourseDiscuss
+    },
+    {
+        path: '/courseWork',
+        component: CourseWork
+    },
+    {
+        path: '/peerExercises',
+        component: PeerExercises
+    },
+    {
+        path: '/prefaceExercises',
+        component: PrefaceExercises
     }
 ]
 

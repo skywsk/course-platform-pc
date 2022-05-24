@@ -39,8 +39,6 @@ res.json({
 app.get('/login',(req,res)=>{
     let user=req.query.user;
     let pwd = req.query.pwd;
-
-
     //登录验证
     const token =jwt.sign({
         user,id:123
@@ -94,9 +92,6 @@ app.get('/CourseMaterials',(req,res)=>{
         data:[
             {id:1,fileName:'第一章',fileSize:'2M'},
             {id:2,fileName:'第二章',fileSize:'1M'},
-            {id:3,fileName:'第三章',fileSize:'1M'},
-            {id:4,fileName:'第四章',fileSize:'1M'},
-            {id:5,fileName:'第五章',fileSize:'1M'},
             // {id:6,fileName:'第六章',fileSize:'1M'},
             // {id:7,fileName:'第七章',fileSize:'1M'},
             // {id:8,fileName:'第八章',fileSize:'1M'},
@@ -186,7 +181,15 @@ app.post('/CourseShow',(req,res)=>{
         }
     )
 })
+app.get('/nodeData',(req,res)=>{
+    let nodeData=req.query
+    res.send({
+        info:'success',
+        state:200,
+        data:nodeData
+    })
 
+})
 // app.get('/KnowledgeGraph',(req,res)=>{
 //     res.send({
 //

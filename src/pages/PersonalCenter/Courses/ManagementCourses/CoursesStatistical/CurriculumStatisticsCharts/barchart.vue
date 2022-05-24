@@ -7,7 +7,8 @@
         name: "bar",
         mounted() {
             let bar=this.$echarts.init(document.getElementById('bar'))
-            bar.setOption({
+            bar.setOption(
+                {
                 xAxis: {
                     type: 'category',
                     data: ['第一章', '第二章', '第三章', '第四章', '第五章']

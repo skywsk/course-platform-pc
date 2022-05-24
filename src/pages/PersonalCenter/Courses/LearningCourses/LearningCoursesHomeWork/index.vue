@@ -62,15 +62,13 @@
                 radio: '',
                 test:'18数学3',
                 homework:[
-                    {title:'命题真值',url:'1',state:false,deadline:'2022-05-01'},
-                    {title:'真命题',url:'2',state:true,deadline:'2022-06-01'},
-                    {title:'假命题',url:'3',state:false,deadline:'2022-07-01'}
+                    {title:'命题',url:'1',state:false,deadline:'2022-05-18'},
                 ]
             };
         },
         methods:{
             te(){
-                console.log('q')
+                this.$router.push('/courseWork')
             }
         }
     }

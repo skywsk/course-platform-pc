@@ -19,9 +19,9 @@
 <el-row>
   <el-col :span="24">
     <el-col :span="3" :offset="2"><h4>知识点标签:</h4></el-col>
-    <el-col :span="2" v-for="node in treeNodeData" :key="node">
+    <el-col :span="6" v-for="node in treeNodeData" :key="node">
 
-      {{node.name}}
+      {{node.label}}
 <!--      <ul v-for="node in treeNodeData" :key="node">-->
 <!--        <li>{{node.name}}</li>-->
 <!--      </ul>-->
@@ -71,6 +71,7 @@
                 fileList: [],
                 innerVisible: false,
                 treeNodeData:[],
+                fileName2:''
             }
         },
         methods:{
@@ -96,7 +97,9 @@
                 let fileName=response.name
                 console.log(fileName)
                 let fileUrl=base.host+'/'+response.url.slice(7)
+                this.fileName2=fileName
                 this.$emit("sendFileUrl", fileUrl)
+                this.$emit('test',file)
             },
             addLabelDialog(){
                 this.innerVisible = true

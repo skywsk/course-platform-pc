@@ -17,6 +17,7 @@ const base = {
     CourseCatalog:'http://localhost:8888/CourseCatalog',
     CoursePlatform:'http://localhost:8888/CoursePlatform',
     CourseShow:'http://localhost:8888/CourseShow',
-    KnowledgeGraph:'http://localhost:8888/KnowledgeGraph'
+    KnowledgeGraph:'http://localhost:8888/KnowledgeGraph',
+    NodeData:'http://localhost:8888/nodeData',
 }
 export default base;

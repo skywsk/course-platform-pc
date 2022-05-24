@@ -77,8 +77,8 @@
     import CoursesStatistical from "@/pages/PersonalCenter/Courses/ManagementCourses/CoursesStatistical/index";
     import CoursesData from "@/pages/PersonalCenter/Courses/ManagementCourses/coursesData/index";
     import CoursesNotice from "@/pages/PersonalCenter/Courses/ManagementCourses/CoursesNotice";
-    import CoursesDiscuss from "@/pages/PersonalCenter/Courses/ManagementCourses/CoursesDiscuss";
-    import KnowledgeMap from "@/pages/PersonalCenter/Courses/ManagementCourses/KnowledgeMap";
+    import CoursesDiscuss from "@/pages/PersonalCenter/Courses/ManagementCourses/CoursesDiscuss/index";
+    import KnowledgeMap from "@/pages/PersonalCenter/Courses/ManagementCourses/KnowledgeMap/index";
     import HomeWork from "@/pages/PersonalCenter/Courses/ManagementCourses/HomeWork/index";
     import ExaminationManagement from "@/pages/PersonalCenter/Courses/ManagementCourses/ExaminationManagement/index";
     import CourseManagement from "@/pages/PersonalCenter/Courses/ManagementCourses/CourseManagement/index";
@@ -118,7 +118,7 @@
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-    height: 600px;
+    height: 900px;
   }
 
   .el-container {

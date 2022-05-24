@@ -11,7 +11,7 @@
     import CourseMaterials from "@/pages/PersonalCenter/Courses/ManagementCourses/coursesData/CourseMaterials";
     import QuestionBank from "@/pages/PersonalCenter/Courses/ManagementCourses/coursesData/QuestionBank";
     export default {
-        name: "CoursesStatistical",
+        name: "index",
         components:{
             CourseMaterials,
             QuestionBank

@@ -52,6 +52,9 @@ const api={
 
     getKnowledgeGraph(){
       return axios.get(base.KnowledgeGraph)
+    },
+    getNodeData(params){
+        return axios.get(base.NodeData,{params})
     }
 }
 
